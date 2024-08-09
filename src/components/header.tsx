@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import DayTime from "./day-time";
 
 const Header = () => {
   return (
@@ -72,9 +73,7 @@ const RightSection = () => {
         alt="Siri"
         className="w-3.5 scale-[1.4] object-fill"
       />
-      <div className="h-full w-auto flex items-center justify-center text-white text-sm">
-        Mon 31 May 05:30 {/* Consider making this dynamic */}
-      </div>
+      <DayTime />
     </div>
   );
 };
