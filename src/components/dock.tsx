@@ -86,45 +86,51 @@ const Dock = () => {
     },
   ];
 
-  // useEffect(() => {
-  //   let icons = document.querySelectorAll(".ico");
-  //   let length = icons.length;
+  useEffect(() => {
+    let icons = document.querySelectorAll(".ico");
+    let length = icons.length;
 
-  //   icons.forEach((item, index) => {
-  //     item.addEventListener("mouseover", (e) => {
-  //       focus(e.target, index);
-  //     });
-  //     item.addEventListener("mouseleave", (e) => {
-  //       icons.forEach((item) => {
-  //         item.style.transform = "scale(1)  translateY(0px)";
-  //       });
-  //     });
-  //   });
+    icons.forEach((item, index) => {
+      item.addEventListener("mouseover", (e) => {
+        focus(e.target as HTMLElement, index);
+      });
+      item.addEventListener("mouseleave", (e) => {
+        icons.forEach((item) => {
+          (item as HTMLElement).style.transform = "scale(1)  translateY(0px)";
+        });
+      });
+    });
 
-  //   const focus = (elem, index) => {
-  //     let previous = index - 1;
-  //     let previous1 = index - 2;
-  //     let next = index + 1;
-  //     let next2 = index + 2;
+    const focus = (elem: HTMLElement, index: number) => {
+      let previous = index - 1;
+      let previous1 = index - 2;
+      let next = index + 1;
+      let next2 = index + 2;
 
-  //     if (previous == -1) {
-  //       console.log("first element");
-  //       elem.style.transform = "scale(1.5)  translateY(-10px)";
-  //     } else if (next == icons.length) {
-  //       elem.style.transform = "scale(1.5)  translateY(-10px)";
-  //       console.log("last element");
-  //     } else {
-  //       elem.style.transform = "scale(1.5)  translateY(-10px)";
-  //       icons[previous].style.transform = "scale(1.2) translateY(-6px)";
-  //       icons[previous1].style.transform = "scale(1.1)";
-  //       icons[next].style.transform = "scale(1.2) translateY(-6px)";
-  //       icons[next2].style.transform = "scale(1.1)";
-  //     }
-  //   };
-  // }, []);
+      if (previous == -1) {
+        console.log("first element");
+        elem.style.transform = "scale(1.5)  translateY(-10px)";
+      } else if (next == length) {
+        elem.style.transform = "scale(1.5)  translateY(-10px)";
+        console.log("last element");
+      } else {
+        try {
+          elem.style.transform = "scale(1.5)  translateY(-10px)";
+          (icons[previous] as HTMLElement).style.transform =
+            "scale(1.2) translateY(-6px)";
+          (icons[previous1] as HTMLElement).style.transform = "scale(1.1)";
+          (icons[next] as HTMLElement).style.transform =
+            "scale(1.2) translateY(-6px)";
+          (icons[next2] as HTMLElement).style.transform = "scale(1.1)";
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    };
+  }, []);
   return (
     <div className="w-auto h-15 rounded-xl flex justify-center absolute bottom-5 left-1/2 -translate-x-1/2">
-      <div className="p-1 w-auto h-full flex items-center justify-center rounded-xl bg-gray-500 bg-opacity-25 backdrop-blur-sm border-[0.1px] border-white border-opacity-18">
+      <div className="p-1 w-auto h-full flex items-center justify-center rounded-xl bg-gray-500 bg-opacity-25 backdrop-blur-sm border-[0.1px] border-gray-400 border-opacity-18">
         {list.map((item, index) => {
           return (
             <li
@@ -132,9 +138,8 @@ const Dock = () => {
               className={`flex items-center justify-center min-w-12 w-12.5 h-12.5
                align-bottom transition-transform duration-200 origin-bottom hover:mx-3.25 group`}
             >
-              <div className="absolute top-[-40px] bg-black bg-opacity-50 text-white text-opacity-90 h-2.5 py-2 px-3 flex items-center justify-center rounded invisible group-hover:visible">
+              <div className="absolute top-[-70px] bg-black bg-opacity-50 text-white text-opacity-90 h-2.5 py-2.5 px-3.5 flex items-center justify-center rounded invisible group-hover:visible after:content-[''] after:absolute after:bottom-[-4px] after:w-0 after:h-0 after:backdrop-blur-sm after:border-l-4 after:border-l-transparent after:border-r-4 after:border-r-transparent after:border-t-4 after:border-t-black after:opacity-50">
                 {item.title}
-                <div className="after:content-[''] after:absolute after:bottom-[-10px] after:w-0 after:h-0 after:backdrop-blur-sm after:border-l-2.5 after:border-l-transparent after:border-r-2.5 after:border-r-transparent after:border-t-2.5 after:border-t-black after:border-t-opacity-50"></div>
               </div>
 
               <img

@@ -1,13 +1,15 @@
-"user client";
+"use client";
 import React, { PropsWithChildren, useEffect } from "react";
+import Menu from "./menu";
 
 const RightClickOverrideWrapper = ({ children }: PropsWithChildren) => {
   const contextMenuFunction = (event: MouseEvent) => {
-    alert("You've tried to open context menu");
-    event.preventDefault();
     var ctxMenu = document.getElementById("ctxMenu");
     if (ctxMenu) {
+      console.log("%c Line:11 🍿", "color:#fca650");
       ctxMenu.style.display = "block";
+      ctxMenu.style.visibility = "visible";
+      ctxMenu.style.position = "absolute";
       ctxMenu.style.left = event.pageX - 10 + "px";
       ctxMenu.style.top = event.pageY - 10 + "px";
     }
@@ -15,8 +17,10 @@ const RightClickOverrideWrapper = ({ children }: PropsWithChildren) => {
   };
   const outsideClickFunction = (event: MouseEvent) => {
     var ctxMenu = document.getElementById("ctxMenu");
-    if (ctxMenu) {
+    if (ctxMenu && event.target !== ctxMenu) {
       ctxMenu.style.display = "";
+      ctxMenu.style.position = "";
+      ctxMenu.style.visibility = "hidden";
       ctxMenu.style.left = "";
       ctxMenu.style.top = "";
     }
@@ -35,11 +39,8 @@ const RightClickOverrideWrapper = ({ children }: PropsWithChildren) => {
       }
     };
   }, []);
-  return (
-    <div id="right-click-override-wrapper" className="bg-yellow absolute z-1 w-screen h-screen">
-      {children}
-    </div>
-  );
+
+  return <div id="right-click-override-wrapper">{children}</div>;
 };
 
 export default RightClickOverrideWrapper;

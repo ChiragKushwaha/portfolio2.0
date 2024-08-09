@@ -8,6 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        typing: "typing 2s steps(22)",
+        blink: "blink .5s step-end infinite alternate",
+      },
+      keyframes: {
+        typing: {
+          from: { width: "0" },
+        },
+        blink: {
+          "50%": { "border-color": "transparent" },
+        },
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

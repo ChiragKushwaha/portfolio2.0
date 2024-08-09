@@ -1,36 +1,45 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 const Menu = () => {
   return (
-    <div className="container mx-auto">
-      <div className="flex justify-between items-center bg-gray-200 p-2">
-        <div className="text-xl font-bold">Menu</div>
-        <div className="flex items-center space-x-4">
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            New Folder
-          </a>
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Get Info
-          </a>
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Change Wallpaper...
-          </a>
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Edit Widgets...
-          </a>
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Use Stacks
-          </a>
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Sort By
-          </a>
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Clean Up
-          </a>
-        </div>
-      </div>
-    </div>
+    // <menu id="ctxMenu" className="w-16 h-40 bg-yellow-200">
+    <ContextMenu />
+    // </menu>
   );
 };
 
 export default Menu;
+
+const ContextMenu = () => {
+  const list = [
+    "New Folder",
+    "Get Info",
+    "Change Wallpaper...",
+    "Edit Widgets...",
+    "Use Stacks",
+    "Sort",
+    "Clean Up",
+    "Clean Up By",
+    "Show View Options",
+  ];
+  return (
+    <div
+      id="ctxMenu"
+      style={{ visibility: "hidden" }}
+      className="px-2 py-1.5 w-auto h-auto flex items-center justify-center rounded-xl bg-gray-700 bg-opacity-25 backdrop-blur-sm border-[0.1px] border-gray-400 border-opacity-18 text-white divide-y-[1px] divide-gray-400 select-none"
+    >
+      {list.map((item, index) => {
+        return <Item key={index} title={item} />;
+      })}
+    </div>
+  );
+};
+
+const Item = ({ title }: { title: string }) => {
+  return (
+    <div className="px-4 py-1 cursor-pointer hover:rounded-md text-sm hover:bg-[rgb(45,89,188)]">
+      {title}
+    </div>
+  );
+};
