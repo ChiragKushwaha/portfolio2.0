@@ -11,8 +11,14 @@ const config: Config = {
       animation: {
         typing: "typing 2s steps(22)",
         blink: "blink .5s step-end infinite alternate",
+        slideInFromLeft:
+          "slideInFromLeft 10s cubic-bezier(0, .9, .9, .999) forwards",
       },
       keyframes: {
+        slideInFromLeft: {
+          "0%": { width: "0%" },
+          "99%": { width: "99%" },
+        },
         typing: {
           from: { width: "0" },
         },

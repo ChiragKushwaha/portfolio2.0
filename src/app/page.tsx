@@ -1,27 +1,17 @@
-import Dock from "@/components/dock";
-import Menu from "@/components/menu";
-import RightClickOverrideWrapper from "@/components/right-click-override-wrapper";
-import Image from "next/image";
-import Folder from "../components/folder";
-import Header from "../components/header";
-import Terminal from "../components/terminal";
+"use client";
+import React, { useState } from "react";
+import SwitchingOn from "./switching-on/page";
+import Desktop from "./desktop/page";
 
 export default function Home() {
-  return (
-    <RightClickOverrideWrapper>
-      <Header />
-      <Image
-        className="w-full h-full"
-        objectFit="cover"
-        objectPosition="center"
-        layout="fill"
-        src={"/wallpapers/wallpaper.jpg"}
-        alt="wallpaper"
-      />
-      <Terminal />
-      <Folder />
-      <Dock />
-      <Menu />
-    </RightClickOverrideWrapper>
-  );
+  const [loading, setLoading] = useState(true);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 10000);
+  }, []);
+  if (loading) {
+    return <SwitchingOn />;
+  }
+  return <Desktop />;
 }

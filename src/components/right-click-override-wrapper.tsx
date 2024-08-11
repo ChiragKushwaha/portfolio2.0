@@ -6,7 +6,6 @@ const RightClickOverrideWrapper = ({ children }: PropsWithChildren) => {
   const contextMenuFunction = (event: MouseEvent) => {
     var ctxMenu = document.getElementById("ctxMenu");
     if (ctxMenu) {
-      console.log("%c Line:11 🍿", "color:#fca650");
       ctxMenu.style.display = "block";
       ctxMenu.style.visibility = "visible";
       ctxMenu.style.position = "absolute";
@@ -40,7 +39,11 @@ const RightClickOverrideWrapper = ({ children }: PropsWithChildren) => {
     };
   }, []);
 
-  return <div id="right-click-override-wrapper">{children}</div>;
+  return (
+    <div id="right-click-override-wrapper" className="w-screen h-screen">
+      {children}
+    </div>
+  );
 };
 
 export default RightClickOverrideWrapper;
