@@ -28,6 +28,27 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.onboarding .stroke0 {
+  stroke: #ffffff;
+  stroke-width: 15;
+  stroke-linecap: round;
+}
+
+.onboarding {
+  stroke-dasharray: 4200;
+  stroke-dashoffset: 4200; /* Reset to 250 and then reduce with animation to give the desired effect */
+  animation: writeIn 2.5s linear forwards;
+}
+
+@keyframes writeIn {
+  0% {
+    stroke-dashoffset: 4000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

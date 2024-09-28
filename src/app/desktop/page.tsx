@@ -1,14 +1,14 @@
 import Image from "next/image";
-import Dock from "../../components/dock";
-import Folder from "../../components/folder";
-import Header from "../../components/header";
-import Menu from "../../components/menu";
-import RightClickOverrideWrapper from "../../components/right-click-override-wrapper";
-import Terminal from "../../components/terminal";
+import Dock from "../../components/desktop/dock";
+import Folder from "../../components/desktop/folder";
+import Header from "../../components/desktop/header";
+import Menu from "../../components/desktop/menu";
+import RightClickOverrideWrapper from "../../components/desktop/right-click-override-wrapper";
+import Terminal from "../../components/desktop/terminal";
 
-const Desktop = () => {
+const Desktop = ({ className }: { className: string }) => {
   return (
-    <RightClickOverrideWrapper>
+    <RightClickOverrideWrapper className={className}>
       <Header />
       <Image
         className="w-full h-full"

@@ -10,8 +10,10 @@ export default function Home() {
       setLoading(false);
     }, 10000);
   }, []);
-  if (loading) {
-    return <SwitchingOn />;
-  }
-  return <Desktop />;
+  return (
+    <>
+      <SwitchingOn className={loading ? "" : "hidden"} />;
+      <Desktop className={loading ? "hidden" : ""} />;
+    </>
+  );
 }

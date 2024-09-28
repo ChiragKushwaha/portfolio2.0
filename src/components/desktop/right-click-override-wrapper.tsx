@@ -2,7 +2,10 @@
 import React, { PropsWithChildren, useEffect } from "react";
 import Menu from "./menu";
 
-const RightClickOverrideWrapper = ({ children }: PropsWithChildren) => {
+const RightClickOverrideWrapper = ({
+  children,
+  className,
+}: PropsWithChildren<{ className: string }>) => {
   const contextMenuFunction = (event: MouseEvent) => {
     var ctxMenu = document.getElementById("ctxMenu");
     if (ctxMenu) {
@@ -40,7 +43,10 @@ const RightClickOverrideWrapper = ({ children }: PropsWithChildren) => {
   }, []);
 
   return (
-    <div id="right-click-override-wrapper" className="w-screen h-screen">
+    <div
+      id="right-click-override-wrapper"
+      className={`w-screen h-screen ${className}`}
+    >
       {children}
     </div>
   );

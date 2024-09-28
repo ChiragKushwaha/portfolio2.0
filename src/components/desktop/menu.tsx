@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import ChevronRight from "./svgs/chevron-right";
+import ChevronRight from "../svgs/chevron-right";
 
 const Menu = () => {
   return (
